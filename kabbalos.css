@@ -1,0 +1,202 @@
+:root {
+    --brand-color: #119ba0;
+    --chart-bg-color: rgba(211, 211, 211, 0.3);
+    --chart-line-color: black;
+    --chart-x-color: white;
+    --line-color1: crimson;
+    --line-color2: gold;
+    --line-color3: firebrick;
+    --line-color4: orange;
+    --line-color5: darkblue;
+    --black: #2d2929;
+    --white: white;
+    --transition-delay: 0.6s;
+    --transition-delay-step: 0.6s;
+}
+
+* {
+    box-sizing: border-box;
+    text-shadow: -.5px -.5px 0 white, .5px -.5px 0 white, -.5px .5px 0 white, .5px .5px 0 white;
+    overflow: hidden;
+
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* BODY
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+body {
+    font-family: 'Passion One', cursive;
+    padding-top: 2px;
+    background: var(--brand-color);
+}
+
+h1 {
+    font-family: 'Passion One', cursive;
+    letter-spacing: 0.03em;
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+
+}
+
+.chart-wrapper {
+    display: grid;
+    justify-content: center;
+    grid-column-gap: 3rem;
+    grid-template-columns: auto auto auto;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* CHART-Y
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.chart-wrapper .chart-y {
+    display: grid;
+    grid-row-gap: 3rem;
+    font-size: 1.5em;
+}
+
+
+/* CHART-X
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.chart-wrapper .chart-x {
+    position: relative;
+    width: 15em;
+    border-radius: 40px;
+    border: 8px solid var(--chart-line-color);
+    background: var(--chart-bg-color);
+    overflow: hidden;
+}
+
+.chart-wrapper .chart-x li {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    color: transparent;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background: var(--chart-x-color);
+    transition: height 0.5s ease-out;
+}
+
+.chart-wrapper .chart-x li::before {
+    content: attr(data-year);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-top: 4px solid;
+    width: 40%;
+    opacity: 0;
+    padding-left: 8px;
+    color: var(--black);
+    font-size: 1em;
+    transition: opacity 0.5s ease-out;
+}
+
+#top {
+    padding-left: 10px;
+}
+
+.chart-wrapper .chart-x li:nth-child(1)::before {
+    border-color: var(--line-color1);
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step));
+}
+
+.chart-wrapper .chart-x li:nth-child(2)::before {
+    border-color: var(--line-color2);
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 2);
+}
+
+.chart-wrapper .chart-x li:nth-child(3)::before {
+    border-color: var(--line-color3);
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 3);
+}
+
+.chart-wrapper .chart-x li:nth-child(4)::before {
+    border-color: var(--line-color4);
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 4);
+}
+
+.chart-wrapper .chart-x li:nth-child(5)::before {
+    border-color: var(--line-color5);
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 5);
+}
+
+.chart-wrapper .chart-x li:nth-child(6)::before {
+    border-color: transparent;
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 6);
+}
+
+/* LOADED
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.loaded .chart-wrapper .chart-x li::before,
+.loaded .chart-wrapper .chart-labels {
+    opacity: 1;
+}
+
+.loaded .chart-wrapper .chart-x li:nth-child(1) {
+    height: 18%;
+    transition-delay: var(--transition-delay);
+}
+
+.loaded .chart-wrapper .chart-x li:nth-child(2) {
+    height: 35%;
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step));
+}
+
+.loaded .chart-wrapper .chart-x li:nth-child(3) {
+    height: 55%;
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 2);
+}
+
+.loaded .chart-wrapper .chart-x li:nth-child(4) {
+    height: 72%;
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 3);
+}
+
+.loaded .chart-wrapper .chart-x li:nth-child(5) {
+    height: 90%;
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 4);
+
+}
+
+.loaded .chart-wrapper .chart-x li:nth-child(6) {
+    height: 100%;
+    transition-delay: calc(var(--transition-delay) + var(--transition-delay-step) * 5);
+
+}
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+footer {
+    font-family: 'Passion One';
+    letter-spacing: 0.03em;
+    font-size: 1em;
+    text-align: right;
+    margin: 5px 10px 10px 0;
+}
+
+.confetti {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    user-select: none;
+    position: absolute;
+    z-index: 10;
+}
