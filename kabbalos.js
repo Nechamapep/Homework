@@ -1,28 +1,7 @@
 (function () {
     const audio = new Audio("YireiShamayimCrop.mp3");
     audio.loop = true;
-    window.addEventListener("click", () => {
-        document.body.classList.add("loaded");
-        audio.play()
-    });
-    window.addEventListener("click", () => {
-        document.body.classList.remove("loaded");
-        audio.play()
-    });
-    window.addEventListener('click', first);
 
-    function first() {
-        document.body.classList.add("loaded");
-        audio.play()
-        document.addEventListener('click', second);
-    }
-    function second() {
-        document.body.classList.clearWindow("loaded");
-        document.addEventListener('click', third);
-    }
-    function third() {
-        document.body.classList.add("loaded");
-    }
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
@@ -134,28 +113,20 @@
         resizeCanvas();
     });
 
+    let thermo = document.getElementById('thermo')
     //------------Click------------
-    window.addEventListener("click", () => {
+    window.addEventListener('click', first);
+    function first() {
         document.body.classList.add("loaded");
         setTimeout(function () {
             initConfetti();
         }, 4500);
         audio.play()
-    });
-    // window.addEventListener('click', function () {
-    //     initConfetti();
-    //     audio.play();
-    // });
-    function unfade(element) {
-        var op = 0.1;  // initial opacity
-        element.style.display = 'block';
-        var timer = setInterval(function () {
-            if (op >= 1) {
-                clearInterval(timer);
-            }
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-            op += op * 0.1;
-        }, 10);
+        window.addEventListener('click', second);
+    };
+    function second() {
+        initConfetti();
     }
+
+
 }());
