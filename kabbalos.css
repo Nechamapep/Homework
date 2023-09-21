@@ -10,8 +10,8 @@
     --line-color5: darkblue;
     --black: #2d2929;
     --white: white;
-    --transition-delay: 0.6s;
-    --transition-delay-step: 0.6s;
+    --transition-delay: .9s;
+    --transition-delay-step: .6s;
 }
 
 * {
